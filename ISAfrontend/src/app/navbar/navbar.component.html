@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <span><mat-icon>eco</mat-icon>Dislinkt</span>
+    
+    <div class = "spacer"></div>
+
+    <div *ngIf="!loginService.isUserLoggedIn(); else activeUser">
+        <a mat-button routerLink="registration">Registration</a> 
+        <a mat-raised-button color="accent" routerLink="login">Log in</a>
+    </div>
+
+    <ng-template #activeUser>
+    <app-navbar-home ></app-navbar-home>
+    </ng-template>
+<!--(LogOut)="HideInstrucotsButton()"-->
+    
+   </mat-toolbar>
+   
