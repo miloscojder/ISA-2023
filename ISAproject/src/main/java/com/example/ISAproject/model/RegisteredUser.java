@@ -11,8 +11,5 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class RegisteredUser extends User{
-	
-	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
-	@JsonIgnore
-	private List<DonationTerms> donationHistory;
+
 }

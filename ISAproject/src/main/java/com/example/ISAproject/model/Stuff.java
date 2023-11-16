@@ -8,9 +8,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Stuff extends User{
 	
-	@OneToOne
+	/*@OneToOne
     private ProfileCenter profileCenter;
-	
+	*/
 	
 	
 	
