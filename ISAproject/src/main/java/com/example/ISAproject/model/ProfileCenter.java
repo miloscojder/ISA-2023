@@ -34,10 +34,6 @@ public class ProfileCenter {
 	
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
-	private List<DonationTerms> freeAppointments;
-	
-	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
-	@JsonIgnore
 	private List<Stuff> listOfStuffs;
 	
 }
