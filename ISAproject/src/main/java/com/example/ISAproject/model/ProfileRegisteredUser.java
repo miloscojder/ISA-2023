@@ -22,6 +22,7 @@ public class ProfileRegisteredUser {
 	private String category;
 	@Column
 	private String benefits;
+
 	//@Column
 	//private List<String> scheduledAppointments;
 	
