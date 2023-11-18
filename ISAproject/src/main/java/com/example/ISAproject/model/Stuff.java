@@ -7,11 +7,6 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Stuff extends User{
-	
-	/*@OneToOne
-    private ProfileCenter profileCenter;
-	*/
-	
-	
-	
+
+
 }
