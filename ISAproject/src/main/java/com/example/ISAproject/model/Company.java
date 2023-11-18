@@ -31,6 +31,10 @@ public class Company {
     @JsonIgnore
     private List<Equipment> equipments;
 
+    public Company() {
+
+    }
+
     public Long getId() {
         return id;
     }
