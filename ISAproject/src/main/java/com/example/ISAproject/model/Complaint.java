@@ -13,7 +13,7 @@ public class Complaint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
-	private boolean isForCenter;
+	private boolean isForCompany;
 	@Column
 	private boolean isForStuff;
 	@Column
