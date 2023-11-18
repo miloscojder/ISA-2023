@@ -40,13 +40,9 @@ public class User implements UserDetails {
 	private String mobile;
 	
 	@Column
-	private String adress;
-	@Column
 	private String city;
 	@Column
 	private String state;
-	@Column
-	private String jmbg;
 	@Column
 	private String sex;
 	@Column
@@ -108,15 +104,7 @@ public class User implements UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
 
-	public String getJmbg() {
-		return jmbg;
-	}
-	public void setJmbg(String jmbg) {
-		this.jmbg = jmbg;
-	}
 	public String getMobile() {
 		return mobile;
 	}
@@ -156,13 +144,7 @@ public class User implements UserDetails {
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
-    
-    public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+
 	public String getCity() {
 		return city;
 	}
@@ -199,7 +181,7 @@ public class User implements UserDetails {
 	
 	
 	 public User(Long id, String username, String password, String email, String firstName, String lastName,
-			String mobile, String adress, String city, String state, String jmbg, String sex, String profession,
+			String mobile, String city, String state, String sex, String profession,
 			String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role,
 			List<Authority> authorities) {
 		super();
@@ -210,10 +192,8 @@ public class User implements UserDetails {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mobile = mobile;
-		this.adress = adress;
 		this.city = city;
 		this.state = state;
-		this.jmbg = jmbg;
 		this.sex = sex;
 		this.profession = profession;
 		this.organizationInformation = organizationInformation;
@@ -225,8 +205,7 @@ public class User implements UserDetails {
 	
 	 
 	 
-	public User(String username, String password, String email, String firstName, String lastName, String mobile,
-			String adress, String city, String state, String jmbg, String sex, String profession,
+	public User(String username, String password, String email, String firstName, String lastName, String mobile, String city, String state, String sex, String profession,
 			String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role,
 			List<Authority> authorities) {
 		super();
@@ -236,10 +215,8 @@ public class User implements UserDetails {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mobile = mobile;
-		this.adress = adress;
 		this.city = city;
 		this.state = state;
-		this.jmbg = jmbg;
 		this.sex = sex;
 		this.profession = profession;
 		this.organizationInformation = organizationInformation;
@@ -248,24 +225,19 @@ public class User implements UserDetails {
 		this.role = role;
 		this.authorities = authorities;
 	}
-	
 	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {
 		 return true;
 	}
-	 @JsonIgnore
-	    @Override
-	    public boolean isAccountNonLocked() {
+	@JsonIgnore
+	@Override
+	public boolean isAccountNonLocked() {
 	        return true;
 	    }
-
-	    @JsonIgnore
-	    @Override
-	    public boolean isCredentialsNonExpired() {
-	        return true;
-	    }
-	
-	
-
+	@JsonIgnore
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 }
