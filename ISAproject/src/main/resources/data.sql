@@ -24,5 +24,9 @@ insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
 
 insert into company(id, name, address, description, average_grade_company) values (1, 'MedLa', 'Sentandrejski put BB', 'Medicinska laboratorija',8);
+insert into company(id, name, address, description, average_grade_company) values (2, 'MedCenter1', 'Vase Stajica 12', 'Medicinska laboratorija',7);
+insert into company(id, name, address, description, average_grade_company) values (3, 'MedLaboratory', ' Zelengorska 16', 'Medicinska laboratorija',6);
 
-insert into equipment(id, name, type, description) values (1, 'Gaza', 'Osnovna', 'Gaza za previjanje');
+insert into equipment(id, name, type, description, company_id) values (1, 'Gaza', 'Osnovna', 'Gaza za previjanje', 1);
+insert into equipment(id, name, type, description, company_id) values (2, 'Makaze', 'Osnovna', 'Makaze za secenje gaze', 2);
+insert into equipment(id, name, type, description, company_id) values (3, 'Maska', 'Osnovna', 'Maska za lice', 2);
