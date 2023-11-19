@@ -20,7 +20,7 @@ public class RegistrationController
     @Autowired
     RegistrationService registrationService;
     @Autowired
-   UserRepository userRepository;
+    UserRepository userRepository;
     
 
     @RequestMapping(value="api/registration",method = RequestMethod.POST,

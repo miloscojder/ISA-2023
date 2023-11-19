@@ -1,0 +1,38 @@
+
+<section class="text-center" style="background-color:ghostwhite">
+    <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">Companies</h2>
+
+    
+<div class="card-body py-5 px-md-5">
+    <div>
+        <form class="form-search" (ngSubmit)="findByName()">
+            <label for="id" style="font-weight:bold">Profile ID: </label>
+            <input name="id" id="id" type="text" [placeholder]="placeholder1" [(ngModel)]="name" style="color:navy">
+            <input type="submit" value="filter" class="btn btn-primary" >
+        </form>
+
+    </div>
+
+<div>
+<table class="table table-bordered table-bordered" border="1">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Grade</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let company of companies">
+        <td>{{company.name}}</td>
+        <td>{{company.description}}</td>
+        <td>{{company.address}}</td>
+        <td>{{company.averageGradeCompany}}</td>
+
+</tbody>
+
+</table>
+
+
+

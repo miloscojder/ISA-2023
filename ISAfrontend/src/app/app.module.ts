@@ -14,8 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
-import { QuestionnaireComponent } from './questionnaire/questionnaire.component'; 
-
+import { CompanyComponent } from './company/company.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     NavbarComponent,
     HomeComponent,
     NavbarHomeComponent,
-    QuestionnaireComponent
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
