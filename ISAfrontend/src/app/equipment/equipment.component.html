@@ -1,0 +1,35 @@
+
+<section class="text-center" style="background-color:ghostwhite">
+    <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">Equipments</h2>
+
+    
+<div class="card-body py-5 px-md-5">
+    <div>
+        <form class="form-search" (ngSubmit)="findByName()">
+            <label for="id" style="font-weight:bold">Equipment name: </label>
+            <input name="id" id="id" type="text" [placeholder]="placeholder2" [(ngModel)]="name" style="color:navy">
+            <input type="submit" value="filter" class="btn btn-primary" >
+        </form>
+
+    </div>
+
+<div>
+<table class="table table-bordered table-bordered" border="1">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let equipment of equipments">
+        <td>{{equipment.name}}</td>
+        <td>{{equipment.type}}</td>
+        <td>{{equipment.description}}</td>
+</tbody>
+
+</table>
+
+
+

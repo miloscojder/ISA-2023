@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
 import { CompanyComponent } from './company/company.component';
+import { EquipmentComponent } from './equipment/equipment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CompanyComponent } from './company/company.component';
     NavbarComponent,
     HomeComponent,
     NavbarHomeComponent,
-    CompanyComponent
+    CompanyComponent,
+    EquipmentComponent
   ],
   imports: [
     BrowserModule,

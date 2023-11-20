@@ -28,13 +28,13 @@ public class EquipmentController {
 
 
     //Pretraga opreme
-    @RequestMapping(value="api/equipmentName", method = RequestMethod.GET,
-            params = "name",
+    @RequestMapping(value="api/equipmentName/{name}", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<List<Equipment>> findByName(@RequestParam String name){
+    public ResponseEntity<List<Equipment>> findByName(@PathVariable String name){
         List<Equipment> equipmentList=this.equipmentService.findByEquipmentName(name);
         return new ResponseEntity<>(equipmentList,HttpStatus.OK);
     }
+
 
 
 }
