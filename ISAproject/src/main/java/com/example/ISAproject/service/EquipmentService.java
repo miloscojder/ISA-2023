@@ -17,8 +17,11 @@ public class EquipmentService {
 
     public List<Equipment> findAll(){return this.equipmentRepository.findAll();}
 
-    public List<Equipment> findByEquipmentName(String name){
-        List<Equipment> allEquipments = this.equipmentRepository.findAll();
+    public List<Equipment> findByEquipmentNameContaining(String name){
+        return this.equipmentRepository.findByNameContaining(name);
+
+
+    /*    List<Equipment> allEquipments = this.equipmentRepository.findAll();
         List<Equipment> equipments = new ArrayList<>();
 
         for(Equipment e : allEquipments){
@@ -28,6 +31,7 @@ public class EquipmentService {
         }
         return equipments;
     //    return this.equipmentRepository.findByName(name);
+        */
     }
 
 }

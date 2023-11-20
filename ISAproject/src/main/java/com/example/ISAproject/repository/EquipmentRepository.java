@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
     List<Equipment> findByName(String name);
+    List<Equipment> findByNameContaining(String name);
 }

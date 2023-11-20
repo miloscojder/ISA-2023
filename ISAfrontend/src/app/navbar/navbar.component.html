@@ -4,6 +4,8 @@
     <div class = "spacer"></div>
 
     <div *ngIf="!loginService.isUserLoggedIn(); else activeUser">
+        <a mat-button routerLink="all-companies">View Companies</a> 
+        <a mat-button routerLink="all-equipments">View Equipments</a> 
         <a mat-button routerLink="registration">Registration</a> 
         <a mat-raised-button color="accent" routerLink="login">Log in</a>
     </div>

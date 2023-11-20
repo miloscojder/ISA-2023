@@ -12,7 +12,7 @@ export class EquipmentService {
   url1 = "http://localhost:8081/api/equipmentName";
 
   constructor(private http:HttpClient) { }
-  
+
   getAllEquipment():Observable<Equipment[]>
   {
     return this.http.get<Equipment[]>(this.url);
@@ -20,6 +20,7 @@ export class EquipmentService {
 
   findEquipmentByName(name: string): Observable<Equipment[]>
   {
+    
     return this.http.get<Equipment[]>(`${this.url1}/${name}`);
   } 
 

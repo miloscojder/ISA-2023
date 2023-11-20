@@ -27,8 +27,9 @@ public class RegistrationController
             consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> registration(@RequestBody User user)
     {
+        User savedUser=this.registrationService.registration(user);
         //User savedUser=this.registrationService.registration(user);
-    	User savedUser=this.userRepository.save(user);
+    	//User savedUser=this.userRepository.save(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 

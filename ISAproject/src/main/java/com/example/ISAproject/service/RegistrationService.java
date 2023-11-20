@@ -2,6 +2,7 @@ package com.example.ISAproject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.ISAproject.model.User;
@@ -14,7 +15,8 @@ public class RegistrationService
 {
     @Autowired
     private UserRepository userRepository;
-    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User getByUsername(String username)
     {
@@ -38,6 +40,7 @@ public class RegistrationService
             return null;
         }
 
+
         //Automatsko prosledjivanje novog ID-ja
         Long id = (long)0;
         for(User u: listOfAll)
@@ -47,6 +50,8 @@ public class RegistrationService
         id = id + 1;
         user.setId(id);
 
+        user.setEnabled(true);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User user2 = this.userRepository.save(user);
         
         return user2;
