@@ -59,7 +59,7 @@ public class UserService {
 		u.setFirstName(userRequest.getFirstName());
 		u.setLastName(userRequest.getLastName());
 		
-		u.setEnabled(false);
+		u.setEnabled(true);
 		u.setEmail(userRequest.getEmail());
 		
 		u.setMobile(userRequest.getMobile());

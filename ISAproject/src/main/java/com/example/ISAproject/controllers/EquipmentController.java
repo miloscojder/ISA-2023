@@ -30,8 +30,15 @@ public class EquipmentController {
     //Pretraga opreme
     @RequestMapping(value="api/equipmentName/{name}", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<List<Equipment>> findByName(@PathVariable String name){
-        List<Equipment> equipmentList=this.equipmentService.findByEquipmentName(name);
+    public ResponseEntity<List<Equipment>> findByName(@PathVariable("name") String name){
+        List<Equipment> equipmentList=this.equipmentService.findByEquipmentNameContaining(name);
+        if(equipmentList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+/*        if(name.isEmpty()){
+            equipmentList = this.equipmentService.findAll();
+            return new ResponseEntity<>(equipmentList, HttpStatus.OK);
+        }*/
         return new ResponseEntity<>(equipmentList,HttpStatus.OK);
     }
 
