@@ -7,6 +7,7 @@ import com.example.ISAproject.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +17,17 @@ public class EquipmentService {
 
     public List<Equipment> findAll(){return this.equipmentRepository.findAll();}
 
-    public List<Equipment> findByEquipmentName(String name){return this.equipmentRepository.findByName(name);}
+    public List<Equipment> findByEquipmentName(String name){
+        List<Equipment> allEquipments = this.equipmentRepository.findAll();
+        List<Equipment> equipments = new ArrayList<>();
+
+        for(Equipment e : allEquipments){
+            if(e.getName().toLowerCase().contains(name.toLowerCase())){
+                equipments.add(e);
+            }
+        }
+        return equipments;
+    //    return this.equipmentRepository.findByName(name);
+    }
 
 }
