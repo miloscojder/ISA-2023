@@ -1,75 +1,116 @@
-<!-- Section: Design Block -->
 <section class="text-center">
-    <!-- Background image -->
-    <div class="p-5 bg-image" style="
-          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
-          height: 300px;
-          "></div>
-    <!-- Background image -->
-  
-    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
-          margin-top: -100px;
-          background: hsla(0, 0%, 100%, 0.8);
-          backdrop-filter: blur(30px);
-          ">
-      <div class="card-body py-5 px-md-5">
-  
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Register</h2>
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                    <input id="firstName" name="firstName" type="text" class="form-control"  [(ngModel)]="newUser.firstName"/>
-                    <label class="form-label" for="firstName">First name</label>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                    <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="newUser.lastName"/>
-                    <label class="form-label" for="lastName">Last name</label>
-                  </div>
+
+  <div class="p-5 bg-image" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+        height: 300px;
+        " ></div>
+
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        " *ngIf="registrated">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Register</h2>
+          <form>
+            
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input id="firstName" name="firstName" type="text" class="form-control"  [(ngModel)]="newUser.firstName"  placeholder="{{mustfill}}"/>
+                  <label class="form-label" for="firstName">First name</label>
                 </div>
               </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input  id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="newUser.lastName" placeholder="{{mustfill}}"/>
+                
+                  <label class="form-label" for="lastName">Last name</label>
+                </div>
+              </div>
+            </div>
 
-              <!-- Username input -->
-              <div class="form-outline mb-4">
-                <input id="username"  name="username" type="text"  class="form-control" [(ngModel)]="newUser.username" />
-                <label class="form-label" for="username">Username</label>
-              </div>
-  
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input id="password" name="password" type="password"  class="form-control" [(ngModel)]="newUser.password" />
-                <label class="form-label" for="password">Password</label>
-              </div>
+            
+           <!--<div class="form-outline mb-4">
+              <input id="username"  name="username" type="text"  class="form-control" [(ngModel)]="newUser.username" />
+              <label class="form-label" for="username">Username</label>
+            </div>--> 
 
-              <div class="form-outline mb-4">
-                <input id="email" name="email" type="text"  class="form-control" [(ngModel)]="newUser.email" />
-                <label class="form-label" for="email">Email</label>
+            <div *ngIf="differentPasswords"> <label><font style="color:red;">Password must be the same</font></label></div>
+            <div class="form-outline mb-4">
+              <input id="password" name="password" type="password"  class="form-control" [(ngModel)]="newUser.password" />
+              <label class="form-label" for="password">Password</label>
+            </div>
+           <div *ngIf="differentPasswords"> <label><font style="color:red;">Password must be the same</font></label></div>
+            <div class="form-outline mb-4">
+              <input id="password1" name="password1" type="password"  class="form-control" [(ngModel)]="password1" />
+              <label class="form-label" for="password1">Password</label>
+            </div>
+            
+            <div class="form-outline mb-4">
+              <input id="email" name="email" type="text"  class="form-control" [(ngModel)]="newUser.email" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="email">Email</label>
+            </div>
+
+
+            <div class="form-outline mb-4">
+              <input id="mobile" name="mobile" type="text"  class="form-control" [(ngModel)]="newUser.mobile" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="mobile">Mobile</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input id="city" name="city" type="text"  class="form-control" [(ngModel)]="newUser.city" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="city">City</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input id="state" name="state" type="text"  class="form-control" [(ngModel)]="newUser.state" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="state">State</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input id="profession" name="profession" type="text"  class="form-control" [(ngModel)]="newUser.profession" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="profession">Profession</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input id="organizationInformation" name="organizationInformation" type="text"  class="form-control" [(ngModel)]="newUser.organizationInformation" placeholder="{{mustfill}}"/>
+              <label class="form-label" for="organizationInformation">Organization Information</label>
+            </div>
+
+            <div class="row">
+              <div class="col-sm">
+                  <p>Select gender</p>
               </div>
-  
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                <label class="form-check-label" for="form2Example33">
-                  Subscribe to our newsletter
-                </label>
+              <div class="col-sm">
+                <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" name="sex" [(ngModel)]="newUser.sex">
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
               </div>
-  
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4" (click)="registration()">
-                Register
-              </button>
-              
-            </form>
-          </div>
+            </div>
+
+            
+            <button type="submit" class="btn btn-primary btn-block mb-4" (click)="registration()">
+              Register
+            </button>
+            
+          </form>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Section: Design Block -->
-  
-  
+  </div>
+</section>
+<div class="alert alert-success" role="alert" *ngIf="!registrated">
+<h1 class="alert-heading">Well done!</h1>
+<h2>You should go to your email account and check your message.</h2>
+<hr>
+<p class="mb-0">In message you will receive link for activation you account</p>
+</div>
+
+
+
