@@ -1,6 +1,11 @@
 package com.example.ISAproject.dto;
 
+import com.example.ISAproject.model.Authority;
 import com.example.ISAproject.model.User;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.List;
 
 public class UserDTO {
 	private Long id;
@@ -10,18 +15,61 @@ public class UserDTO {
 	private String firstName;
 	private String lastName;
 	private String mobile;
+
+	private String city;
+	private String state;
+	private String sex;
+	private String profession;
+	private String organizationInformation;
+	private boolean enabled;
 	private String role;
-	public UserDTO(Long id, String username, String password, String email, String firstName, String lastName,
-			String mobile, String role) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.mobile = mobile;
-		this.role = role;
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getProfession() {
+		return profession;
+	}
+
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+
+	public String getOrganizationInformation() {
+		return organizationInformation;
+	}
+
+	public void setOrganizationInformation(String organizationInformation) {
+		this.organizationInformation = organizationInformation;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public Long getId() {
@@ -72,7 +120,24 @@ public class UserDTO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
+	public UserDTO(Long id, String username, String password, String email, String firstName, String lastName, String mobile, String city, String state, String sex, String profession, String organizationInformation, boolean enabled, String role) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobile = mobile;
+		this.city = city;
+		this.state = state;
+		this.sex = sex;
+		this.profession = profession;
+		this.organizationInformation = organizationInformation;
+		this.enabled = enabled;
+		this.role = role;
+	}
+
 	public UserDTO(User user) {
 		super();
 	

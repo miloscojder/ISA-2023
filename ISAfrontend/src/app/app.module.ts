@@ -16,6 +16,9 @@ import { HomeComponent } from './home/home.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
 import { CompanyComponent } from './company/company.component';
 import { EquipmentComponent } from './equipment/equipment.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { EquipmentComponent } from './equipment/equipment.component';
     HomeComponent,
     NavbarHomeComponent,
     CompanyComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    ConfirmUserComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import { EquipmentComponent } from './equipment/equipment.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

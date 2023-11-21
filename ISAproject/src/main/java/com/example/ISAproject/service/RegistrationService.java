@@ -27,7 +27,7 @@ public class RegistrationService
     public User registration(User user)
     {
         List<User> listOfAll = this.userRepository.findAll();
-
+        System.out.println("Pozvali smo metodu registracije");
         if(userRepository.findByUsername(user.getUsername()) != null)
         {
             System.out.println("Username Already exists! ");
@@ -40,7 +40,7 @@ public class RegistrationService
             return null;
         }
 
-
+/*
         //Automatsko prosledjivanje novog ID-ja
         Long id = (long)0;
         for(User u: listOfAll)
@@ -50,8 +50,7 @@ public class RegistrationService
         id = id + 1;
         user.setId(id);
 
-        user.setEnabled(true);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));*/
         User user2 = this.userRepository.save(user);
         
         return user2;
