@@ -7,6 +7,8 @@ import { Company } from './model/company';
 import { CompanyComponent } from './company/company.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
+import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -15,6 +17,10 @@ const routes: Routes = [
   {path: 'all-companies', component:CompanyComponent},
   {path: 'all-equipments', component:EquipmentComponent},
   {path: 'confirm-registration/:id', component: ConfirmUserComponent},
+  {path: 'home-page', component:HomeRegisteredUserComponent},
+  {path: 'profile-center/:id', component:ProfileCompanyComponent},
+  
+
 ];
 
 @NgModule({

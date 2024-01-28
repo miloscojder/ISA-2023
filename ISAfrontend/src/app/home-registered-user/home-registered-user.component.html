@@ -1,0 +1,25 @@
+<h1></h1>
+<p style="text-align:center"><font size="20"   style="color:blue;">Medical procurement center</font></p>
+<div style="width:600px; margin:0 auto;">
+</div>
+<div>
+    <table class="table table-bordered table-bordered" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies">
+            <td>{{company.name}}</td>
+            <td>{{company.description}}</td>
+            <td>{{company.address}}</td>
+            <td>{{company.averageGradeCompany}}</td>
+    
+    </tbody>
+    
+    </table>
+    

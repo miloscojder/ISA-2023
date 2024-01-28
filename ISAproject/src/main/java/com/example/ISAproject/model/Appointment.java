@@ -1,5 +1,6 @@
 package com.example.ISAproject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Appointment {
     private Long id;
 
     @Column
+    @JsonFormat (pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime date;
 
     @Column
@@ -22,13 +24,15 @@ public class Appointment {
     private boolean isFree;
 
     @Column(name = "reservationStart", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime reservationStart;
 
     @Column(name = "reservationEnd", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime reservationEnd;
 
     @Column
-    private boolean isRegisteredUserCome;
+    private boolean isRegisteredUserCome = false;
 
     @ManyToOne
     private RegisteredUser registeredUser;

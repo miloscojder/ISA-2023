@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           console.log(data)
           this.LogIn.next();
           this.idLoginUser = sessionStorage.getItem('id');
-          this.router.navigate(['']);
+          this.router.navigate(['home-page']);
           this.invalidLogin = false
         },
         (error: { message: string | null; }) => {

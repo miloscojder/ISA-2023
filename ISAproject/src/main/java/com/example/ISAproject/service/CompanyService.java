@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -14,6 +15,16 @@ public class CompanyService {
     private CompanyRepository companyRepository;
 
     public List<Company> findAll(){return this.companyRepository.findAll();}
+
+    public Company findById(Long id)
+    {
+        Optional<Company> opt=this.companyRepository.findById(id);
+        if(!opt.isPresent())
+        {
+            return null;
+        }
+        return opt.get();
+    }
 
     public List<Company> findByCompanyName(String name){
         List<Company> allCompanies = this.companyRepository.findAll();
@@ -26,7 +37,6 @@ public class CompanyService {
         }
         return companies;
         //return this.companyRepository.findByName(name);
-
 
     }
 
