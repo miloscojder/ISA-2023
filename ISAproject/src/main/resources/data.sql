@@ -30,3 +30,16 @@ insert into company(id, name, address, description, average_grade_company) value
 insert into equipment(id, name, type, description, company_id) values (1, 'Gaza', 'Osnovna', 'Gaza za previjanje', 1);
 insert into equipment(id, name, type, description, company_id) values (2, 'Makaze', 'Osnovna', 'Makaze za secenje gaze', 2);
 insert into equipment(id, name, type, description, company_id) values (3, 'Maska', 'Osnovna', 'Maska za lice', 2);
+
+
+insert into registered_user (id, points, category, benefits) values (1, 0,'Redovan', 'Redovan');
+
+insert into calendar(id) values (1);
+--Dodavanje termina za preuzimanje opreme
+insert into appointment(id, date, duration, is_free, reservation_start, reservation_end, is_registered_user_come, registered_user_id, company_id, calendar_id)
+values (1, '2024-01-22 09:10:00', 15, false, '2024-02-01 08:00:00', '2024-02-01 08:15:00', false, 1, 1, 1);
+
+--Dodeljivanje opreme terminu
+insert into appointment_equipments(appointment_id, equipments_id) values (1, 1);
+insert into appointment_equipments(appointment_id, equipments_id) values (1, 2);
+

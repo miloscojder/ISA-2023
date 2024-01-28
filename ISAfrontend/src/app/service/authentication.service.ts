@@ -43,7 +43,7 @@ export class AuthenticationService {
     let username = sessionStorage.getItem("username");
 
     console.log(!(username === null));
-    return !(username === null);
+    return (username !== null);
   }
 
    

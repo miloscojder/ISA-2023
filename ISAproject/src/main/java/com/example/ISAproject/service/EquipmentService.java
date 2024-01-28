@@ -15,6 +15,9 @@ public class EquipmentService {
     @Autowired
     private EquipmentRepository equipmentRepository;
 
+    @Autowired
+    private CompanyService companyService;
+
     public List<Equipment> findAll(){return this.equipmentRepository.findAll();}
 
     public List<Equipment> findByEquipmentNameContaining(String name){
@@ -33,5 +36,25 @@ public class EquipmentService {
     //    return this.equipmentRepository.findByName(name);
         */
     }
+
+    //Pretraga opreme po centru
+    public List<Equipment> findAllEquipmentByCompany(Long id)
+    {
+        List<Equipment> allEquipment = equipmentRepository.findAll();
+        List<Equipment> findedEquipment = new ArrayList<>();
+
+        for(Equipment dt: allEquipment)
+        {
+            if(dt.getCompany().getId() == id)
+            {
+                    findedEquipment.add(dt);
+
+            }
+        }
+
+        return findedEquipment;
+    }
+
+
 
 }

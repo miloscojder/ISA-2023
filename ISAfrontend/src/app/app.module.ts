@@ -19,6 +19,8 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
+import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
+import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
     NavbarHomeComponent,
     CompanyComponent,
     EquipmentComponent,
-    ConfirmUserComponent
+    ConfirmUserComponent,
+    HomeRegisteredUserComponent,
+    ProfileCompanyComponent
   ],
   imports: [
     BrowserModule,
