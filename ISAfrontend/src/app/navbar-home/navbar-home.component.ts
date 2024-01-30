@@ -32,22 +32,7 @@ username: any;
   }
 
   showDashboard() {
-    this.id = sessionStorage.getItem('id');
-    this.role = sessionStorage.getItem('role');
-    if (this.role == 'Owner') {
-      this.router.navigate(['owner', this.id]);
-
-    } else if (this.role == 'Instructor') {
-      this.router.navigate(['instructors', this.id]);
-    } else if (this.role == 'CottageOwner') {
-      this.router.navigate(['cottageOwner', this.id]);
-
-    } else if (this.role == 'Admin' || this.role == 'SysAdmin') {
-
-      this.router.navigate(['admin', this.id]);
-    } else if (this.role == 'BoatOwner') {
-    this.router.navigate(['boatOwner', this.id]);
-    }
+ 
   }
 
 }

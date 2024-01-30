@@ -42,19 +42,34 @@ public class EquipmentService {
     {
         List<Equipment> allEquipment = equipmentRepository.findAll();
         List<Equipment> findedEquipment = new ArrayList<>();
-
+        System.out.println("Trazenje opreme po centru");
         for(Equipment dt: allEquipment)
         {
             if(dt.getCompany().getId() == id)
             {
-                    findedEquipment.add(dt);
+                System.out.println("Prikupljamo opremu iz centraID: " + id + dt.getName());
+                findedEquipment.add(dt);
 
             }
         }
 
         return findedEquipment;
     }
+    public List<Equipment> findAllEquipmentByCompanyByEquipmentNameContaining(Long id, String name){
+        List<Equipment> companyEquipments = this.findAllEquipmentByCompany(id);
+        List<Equipment> equipments = new ArrayList<>();
 
+        /*if(name.equals("")){
+            return companyEquipments;
+        }*/
+
+        for(Equipment e : companyEquipments){
+            if(e.getName().toLowerCase().contains(name.toLowerCase())){
+                equipments.add(e);
+            }
+        }
+        return equipments;
+    }
 
 
 }

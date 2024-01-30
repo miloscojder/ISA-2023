@@ -11,6 +11,7 @@ export class CompanyServiceService {
   url1 = "http://localhost:8081/api/companyName";
   url2 = "http://localhost:8081/api/companyId";
   url3="http://localhost:8081/api/company/equipment";
+  url4= "http://localhost:8081/api/company/equipment/equipmentName"
 
   constructor(private http:HttpClient) { }
   
@@ -30,7 +31,11 @@ export class CompanyServiceService {
   }
 
   getAllEquipmentByCompany(id:number):Observable<Equipment[]>
-{
-  return this.http.get<Equipment[]> (`${this.url3}/${id}`)
-}
+  {
+    return this.http.get<Equipment[]> (`${this.url3}/${id}`)
+  }
+
+  findCompanyEquipmentByName(id: number, name: string): Observable<Equipment[]> {
+    return this.http.get<Equipment[]>(`${this.url4}/${id}/${name}`);
+  }
 }

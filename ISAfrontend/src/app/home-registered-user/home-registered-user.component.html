@@ -10,6 +10,7 @@
             <th>Description</th>
             <th>Address</th>
             <th>Grade</th>
+            <th>Selet company</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +19,8 @@
             <td>{{company.description}}</td>
             <td>{{company.address}}</td>
             <td>{{company.averageGradeCompany}}</td>
-    
+            <td><button  (click)="goToCompany(company.id)">Select</button></td>
+        </tr>
     </tbody>
     
     </table>
