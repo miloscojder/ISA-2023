@@ -43,3 +43,11 @@ values (1, '2024-01-22 09:10:00', 15, false, '2024-02-01 08:00:00', '2024-02-01 
 insert into appointment_equipments(appointment_id, equipments_id) values (1, 1);
 insert into appointment_equipments(appointment_id, equipments_id) values (1, 2);
 
+--Dodavanje predefinisanih termina
+insert into appointment (id, date, duration, is_free, reservation_start, reservation_end, is_registered_user_come, registered_user_id, company_id, calendar_id)
+values
+    (2, '2024-01-27 09:00:00', 30, true, '2024-02-03 08:00:00', '2024-01-30 09:30:00', false, 1, 1, 1),
+    (3, '2024-01-27 14:30:00', 45, true, '2024-02-15 14:00:00', '2024-02-15 14:45:00', false, 1, 2, 1),
+    (4, '2024-01-28 10:00:00', 30, true, '2024-03-05 09:30:00', '2024-03-05 10:00:00', false, 1, 3, 1),
+    (5, '2024-01-29 13:15:00', 60, true, '2024-03-20 13:00:00', '2024-03-20 14:00:00', false, 1, 1, 1),
+    (6, '2024-01-25 11:45:00', 15, true, '2024-04-10 11:30:00', '2024-04-10 11:45:00', false, 1, 2, 1);

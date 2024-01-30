@@ -91,8 +91,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/equipmentName/{name}").permitAll()
 									.antMatchers("/users/signup/async").permitAll()
 									.antMatchers("/users/api/confirm-registration/{id}").permitAll()
-									.antMatchers("/users/api/companyId/{id}").permitAll()
-									.antMatchers("/users/api/company/equipment/{id}").permitAll()
+									.antMatchers("/api/companyId/{id}").permitAll()
+									.antMatchers("/api/company/equipment/{id}").permitAll()
+									.antMatchers("/api/company/equipment/equipmentName/{id}/{name}").permitAll()
 
 
 				// ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
