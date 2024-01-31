@@ -16,7 +16,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	    public void commence(HttpServletRequest request,
 	                         HttpServletResponse response,
 	                         AuthenticationException authException) throws IOException {
-			System.out.println("Ovde pravi problem 'RestAuthenticationEntryPoint'");
+			System.out.println("Ovde pravi problem 'RestAuthenticationEntryPoint', pogledaj putanje da li se poklapaju u kontroleru i WebSecurityConfig");
 			System.out.println("Authentication failed: " + authException.getMessage());
 	        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
 	    }

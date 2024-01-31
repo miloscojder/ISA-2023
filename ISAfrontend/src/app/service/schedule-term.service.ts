@@ -13,6 +13,7 @@ export class ScheduleTermService {
   companyId: number;
   registeredUserId: number;
   appointmentId: number;
+  equipmentIds: number[] = [];
   equipments: Equipment[];
 
   constructor(private http:HttpClient) { }

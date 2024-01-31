@@ -21,6 +21,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { SchedulingAppointmentComponent } from './scheduling-appointment/scheduling-appointment.component';
+import { RegUserDashboardComponent } from './reg-user-dashboard/reg-user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ProfileCompanyComponent } from './profile-company/profile-company.compo
     EquipmentComponent,
     ConfirmUserComponent,
     HomeRegisteredUserComponent,
-    ProfileCompanyComponent
+    ProfileCompanyComponent,
+    SchedulingAppointmentComponent,
+    RegUserDashboardComponent
   ],
   imports: [
     BrowserModule,
