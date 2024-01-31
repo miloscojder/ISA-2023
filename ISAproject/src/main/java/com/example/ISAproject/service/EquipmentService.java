@@ -71,5 +71,19 @@ public class EquipmentService {
         return equipments;
     }
 
+    public List<Equipment> getEquipmentByIds(List<Long> equipmentIds){
+        List<Equipment> allEquipments = this.findAll();
+        List<Equipment> foundedEquipments = new ArrayList<>();
+
+        for(Long equipmentId : equipmentIds){
+            for(Equipment equipment : allEquipments){
+                if(equipmentId.equals(equipment.getId())){
+                    foundedEquipments.add(equipment);
+                    break;
+                }
+            }
+        }
+        return foundedEquipments;
+    }
 
 }

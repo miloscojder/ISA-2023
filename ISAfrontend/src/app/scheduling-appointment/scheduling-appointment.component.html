@@ -1,0 +1,29 @@
+
+<section class="text-center" style="background-color:ghostwhite">
+    <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">Choose the appointment which you want to schedule</h2>
+
+<div>
+<table class="table table-bordered table-bordered" border="1">
+<thead>
+    <tr>
+        <th>Duration</th>
+        <th>Reservaion start</th>
+        <th>Reservation end</th>
+        <th>Company</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let appointment of avaliableTerms">
+        <td>{{appointment.duration}}</td>
+        <td>{{appointment.reservationStart}}</td>
+        <td>{{appointment.reservationEnd}}</td>
+        <td>{{appointment.company.name}}</td>
+        <td>
+            <button (click)="toggleSelectionAppointment(appointment.id)">Select</button>
+        </td>
+</tbody>
+
+</table>
+</div>
+
+

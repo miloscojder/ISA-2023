@@ -9,16 +9,16 @@ public class ScheduleTermDTO {
     private Long appointmentId;
     private Long companyId;
     private Long registeredUserId;
-    private List<Equipment> equipments;
+    private List<Long> equipmentIds;
 
     public ScheduleTermDTO() {
     }
 
-    public ScheduleTermDTO(Long appointmentId, Long companyId, Long registeredUserId, List<Equipment> equipments) {
+    public ScheduleTermDTO(Long appointmentId, Long companyId, Long registeredUserId, List<Long> equipmentIds) {
         this.appointmentId = appointmentId;
         this.companyId = companyId;
         this.registeredUserId = registeredUserId;
-        this.equipments = equipments;
+        this.equipmentIds = equipmentIds;
     }
 
     public Long getAppointmentId() {
@@ -45,12 +45,12 @@ public class ScheduleTermDTO {
         this.registeredUserId = registeredUserId;
     }
 
-    public List<Equipment> getEquipments() {
-        return equipments;
+    public List<Long> getEquipmentIds() {
+        return equipmentIds;
     }
 
-    public void setEquipments(List<Equipment> equipments) {
-        this.equipments = equipments;
+    public void setEquipments(List<Long> equipmentIds) {
+        this.equipmentIds = equipmentIds;
     }
 
 }

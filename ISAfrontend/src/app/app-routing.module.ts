@@ -9,6 +9,8 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
+import { SchedulingAppointmentComponent } from './scheduling-appointment/scheduling-appointment.component';
+import { RegUserDashboardComponent } from './reg-user-dashboard/reg-user-dashboard.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
   {path: 'confirm-registration/:id', component: ConfirmUserComponent},
   {path: 'home-page', component:HomeRegisteredUserComponent},
   {path: 'profile-center/:id', component:ProfileCompanyComponent},
-  
+  {path: 'schedule-appointment', component:SchedulingAppointmentComponent},
+  {path: 'reg-user-dashboard', component:RegUserDashboardComponent},
 
 ];
 

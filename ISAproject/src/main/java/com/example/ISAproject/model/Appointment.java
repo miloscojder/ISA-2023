@@ -48,6 +48,17 @@ public class Appointment {
     @JsonIgnore
     private List<Equipment> equipments;
 
+    @ManyToOne
+    private Stuff stuff;
+
+    public Stuff getStuff() {
+        return stuff;
+    }
+
+    public void setStuff(Stuff stuff) {
+        this.stuff = stuff;
+    }
+
     public List<Equipment> getEquipments() {
         return equipments;
     }
@@ -140,7 +151,7 @@ public class Appointment {
 
     public Appointment(Long id, LocalDateTime date, int duration, boolean isFree, LocalDateTime reservationStart,
                        LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser,
-                       Company company, Calendar calendar, List<Equipment> equipments) {
+                       Company company, Calendar calendar, List<Equipment> equipments, Stuff stuff) {
         this.id = id;
         this.date = date;
         this.duration = duration;
@@ -152,5 +163,6 @@ public class Appointment {
         this.company = company;
         this.calendar = calendar;
         this.equipments = equipments;
+        this.stuff = stuff;
     }
 }

@@ -73,6 +73,8 @@ export class ProfileCompanyComponent implements OnInit {
 
   viewFreeTerm()
   {
-    
+    this.scheduleTermService.equipmentIds = this.selectedEquipmentIds;
+    console.log('Selektovana oprema za termin:', this.selectedEquipmentIds);
+    this.router.navigate(['schedule-appointment']);
   }
 }
