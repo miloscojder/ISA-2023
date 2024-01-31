@@ -1,5 +1,6 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.ScheduleTermDTO;
 import com.example.ISAproject.model.Appointment;
 import com.example.ISAproject.model.Company;
 import com.example.ISAproject.service.AppointmentService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,4 +28,21 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
+    //Zakazivanje termina za preuzizmanje opreme
+    @RequestMapping(value="api/scheduleTerm",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<Appointment>  scheduleNewTerm(@RequestBody ScheduleTermDTO dto)throws Exception{
+
+        Appointment updatedAppointment = this.appointmentService.scheduleTerm(dto);
+        return  new ResponseEntity<>(updatedAppointment, HttpStatus.OK);
+    }
+    //Prikaz svih termina koje je zakazao regisrovani korisnik
+    @RequestMapping(value="api/scheduledTerm/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<Appointment>> findAllAppointmentByRegisteredUser(@PathVariable Long id)
+    {
+        List<Appointment> appointments= this.appointmentService.findAllTermsByRegisteredUser(id);
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
 }

@@ -64,7 +64,7 @@ public class Appointment {
     }
 
     public void setEquipments(List<Equipment> equipments) {
-        this.equipments = equipments;
+        this.equipments.addAll(equipments);
     }
 
     public Long getId() {

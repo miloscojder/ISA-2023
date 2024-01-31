@@ -1,22 +1,22 @@
 import { Equipment } from "./equipment";
 
 interface ScheduleTermInterface {
-    appointentId: number;
+    appointmentId: number;
     registeredUserId: number;
     companyId: number;
-    equipments: Equipment[];
+    equipmentIds: number[];
 }
 
 export class ScheduleTerm implements ScheduleTermInterface{
-    appointentId: number;
+    appointmentId: number;
     registeredUserId: number;
     companyId: number;
-    equipments: Equipment[];
+    equipmentIds: number[] = [];
 
     constructor(obj: ScheduleTermInterface){
-        this.appointentId = obj.appointentId;
+        this.appointmentId = obj.appointmentId;
         this.companyId = obj.companyId;
         this.registeredUserId = obj.registeredUserId;
-        this.equipments = obj.equipments;
+        this.equipmentIds = obj.equipmentIds;
     }
 }

@@ -15,8 +15,4 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     List<Appointment> findByIsFreeAndCompanyId(boolean isFree, Long id);
 
-    /*   @Query("SELECT app FROM Appointment app WHERE app.reservationStart < :term and app.reservationEnd > :term and app.isFree=true and  app.company.id= :id")
-    List<Appointment> getAvailableTerms(@Param("term") LocalDateTime userDate, @Param("id") Long id);
-*/
-
 }

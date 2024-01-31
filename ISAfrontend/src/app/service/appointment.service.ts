@@ -8,7 +8,14 @@ import { Appointment } from '../model/appointment';
 })
 export class AppointmentService {
   url = "http://localhost:8081/api/appointments";
+  url1 = "http://localhost:8081/api/scheduledTerm";
+
+
   constructor(private http: HttpClient) { }
+
+  findAllTermsByRegisteredUser(id: number): Observable<Appointment[]>{
+    return this.http.get<Appointment[]>(`${this.url1}/${id}`)
+  }
 
   findAllAvailableTerms(id: number): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(`${this.url}/${id}`)
