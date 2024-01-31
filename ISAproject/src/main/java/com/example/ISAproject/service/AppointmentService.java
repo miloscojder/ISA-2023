@@ -40,14 +40,19 @@ public class AppointmentService {
         Company company = this.companyService.findById(dto.getCompanyId());
         Appointment appointment = this.findById(dto.getAppointmentId());
 
+        System.out.println("Usao je u metodu scheduleTerm"+ dto.getRegisteredUserId());
+
         appointment.setFree(false);
         appointment.setRegisteredUserCome(false);
         appointment.setRegisteredUser(registeredUser);
         appointment.setCompany(company);
         appointment.setEquipments(this.equipmentService.getEquipmentByIds(dto.getEquipmentIds()));
 
-        return this.appointmentRepository.save(appointment);
+        Appointment app = this.appointmentRepository.save(appointment);
+        System.out.println("Ovo je taj termin koji je rezervisan"+ app.getRegisteredUser().getFirstName());
+        return app;
     }
+    //Da li user ima 3 penala
     public boolean whetherRegisteredUserHasThreePenalties(Long userId){
         RegisteredUser registeredUser=this.registeredUserService.findById(userId);
         if(registeredUser.getPoints()>2)
@@ -89,6 +94,29 @@ public class AppointmentService {
         return this.appointmentRepository.findByIsFree(true);
     }
     public List<Appointment> findAllAvailableTermsByCenter(Long id) {
-        return this.appointmentRepository.findByIsFreeAndCompanyId(true, id);
+        LocalDateTime now = LocalDateTime.now();
+
+        // Pronađi sve slobodne termine za određenu kompaniju i filtriraj one koji su prosli
+        List<Appointment> availableTerms = this.appointmentRepository.findByIsFreeAndCompanyId(true, id);
+        List<Appointment> futureAvailableTerms = new ArrayList<>();
+
+        for (Appointment appointment : availableTerms) {
+            if (appointment.getReservationStart().isAfter(now)) {
+                futureAvailableTerms.add(appointment);
+            }
+        }
+
+        return futureAvailableTerms;
+    }
+    public List<Appointment> findAllTermsByRegisteredUser(Long id){
+        List<Appointment> allTerms = appointmentRepository.findAll();
+        List<Appointment> foundedTerms = new ArrayList<>();
+
+        for(Appointment appointment: allTerms){
+            if (appointment.getRegisteredUser() != null && appointment.getRegisteredUser().getId() == id){
+                foundedTerms.add(appointment);
+            }
+        }
+        return foundedTerms;
     }
 }

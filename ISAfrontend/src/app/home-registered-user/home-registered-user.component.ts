@@ -22,15 +22,15 @@ export class HomeRegisteredUserComponent implements OnInit {
   registered_user_id: number;
   loginService: any;
   scheduleTerm: ScheduleTerm;
-  equipmentss: Equipment[];
+  equipmentss: number[] = [];
   
   constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserService,
     private companyService: CompanyServiceService, private scheduleTermService: ScheduleTermService, private router: Router) {
       this.scheduleTerm = new ScheduleTerm({
         registeredUserId:0,
         companyId:0,
-        appointentId:0,
-        equipments:this.equipmentss
+        appointmentId:0,
+        equipmentIds:this.equipmentss
 
       })
      }

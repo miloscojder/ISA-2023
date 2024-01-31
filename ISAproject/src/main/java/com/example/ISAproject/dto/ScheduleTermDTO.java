@@ -49,8 +49,7 @@ public class ScheduleTermDTO {
         return equipmentIds;
     }
 
-    public void setEquipments(List<Long> equipmentIds) {
+    public void setEquipmentIds(List<Long> equipmentIds) {
         this.equipmentIds = equipmentIds;
     }
-
 }
