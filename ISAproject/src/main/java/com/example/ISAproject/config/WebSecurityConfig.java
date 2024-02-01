@@ -98,6 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/scheduleTerm").permitAll()
 									.antMatchers("/api/scheduledTerm/{id}").permitAll()
 									.antMatchers("/api/cancelTerm").permitAll()
+									.antMatchers("/api/can-make-reservation/{idUser}").permitAll()
 
 
 				// ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici

@@ -11,6 +11,7 @@ public enum Role{
 
     public static class Values {
         public static final String Admin = "Admin";
+
         public static final String RegisteredUser = "RegisteredUser";
         public static final String Stuff = "Stuff";
     }

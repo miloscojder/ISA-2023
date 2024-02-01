@@ -15,15 +15,21 @@ insert into user (id, username, password, email, first_name, last_name, mobile, 
 values (5, 'marko23', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'marko23@gmail.com', 'Marko', 'Markovic', '602-479-9290', 'Nis', 'Srbija', 'Male', 'Senior Cost Accountant', 'Avamba', true, 'RegisteredUser');
 
 insert into user (id, username, password, email, first_name, last_name, mobile, city, state, sex, profession, organization_information, enabled, role)
-values (6, 'rcubbon3', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'rcubbon3@google.com.hk', 'Riannon', 'Cubbon', '602-563-0674', 'Tempe', 'Arizona', 'Female', 'Chemical Engineer', 'Kwimbee', false, false);
+values (6, 'rcubbon3', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'rcubbon3@google.com.hk', 'Riannon', 'Cubbon', '602-563-0674', 'Tempe', 'Arizona', 'Female', 'Chemical Engineer', 'Kwimbee', false, 'Admin');
 
 insert into user (id, username, password, email, first_name, last_name, mobile, city, state, sex, profession, organization_information, enabled, role)
-values (7, 'crigardeau4', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'crigardeau4@google.ca', 'Clark', 'Rigardeau', '520-352-6769', 'Tucson', 'Arizona', 'Male', 'Business Systems Development Analyst', 'Yamia', false, true);
+values (7, 'crigardeau4', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'crigardeau4@google.ca', 'Clark', 'Rigardeau', '520-352-6769', 'Tucson', 'Arizona', 'Male', 'Business Systems Development Analyst', 'Yamia', false, 'Admin');
 
 
 
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
+insert into user_authority (user_id,authority_id) values (3,2);
+insert into user_authority (user_id,authority_id) values (4,1);
+insert into user_authority (user_id,authority_id) values (5,2);
+insert into user_authority (user_id,authority_id) values (6,1);
+insert into user_authority (user_id,authority_id) values (7,1);
+insert into user_authority (user_id,authority_id) values (8,3);
 
 insert into company(id, name, address, description, average_grade_company) values (1, 'MedLa', 'Sentandrejski put BB', 'Medicinska laboratorija',8);
 insert into company(id, name, address, description, average_grade_company) values (2, 'MedCenter1', 'Vase Stajica 12', 'Medicinska laboratorija',7);
@@ -55,4 +61,5 @@ values
     (3, '2024-01-27 14:30:00', 45, true, '2024-02-15 14:00:00', '2024-02-15 14:45:00', false, null, 2, 1, 8),
     (4, '2024-01-28 10:00:00', 30, true, '2024-03-05 09:30:00', '2024-03-05 10:00:00', false, null, 3, 1, 8),
     (5, '2024-01-29 13:15:00', 60, true, '2024-03-20 13:00:00', '2024-03-20 14:00:00', false, null, 1, 1, 8),
-    (6, '2024-01-25 11:45:00', 15, true, '2024-04-10 11:30:00', '2024-04-10 11:45:00', false, null, 2, 1, 8);
+    (6, '2024-01-25 11:45:00', 15, true, '2024-04-10 11:30:00', '2024-04-10 11:45:00', false, null, 2, 1, 8),
+    (7, '2024-01-25 11:45:00', 15, true, '2024-02-03 11:30:00', '2024-02-03 11:45:00', false, null, 2, 1, 8);

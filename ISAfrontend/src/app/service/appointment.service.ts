@@ -11,6 +11,7 @@ export class AppointmentService {
   url = "http://localhost:8081/api/appointments";
   url1 = "http://localhost:8081/api/scheduledTerm";
   url2 = "http://localhost:8081/api/cancelTerm";
+  url3 = "http://localhost:8081/api/can-make-reservation";
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,9 @@ export class AppointmentService {
   cancelTerm(scheduleTerm: ScheduleTerm): Observable<Appointment>{
     console.log('Pokrenuta je f-ja za otkazivanje termina', scheduleTerm.appointmentId)
     return this.http.put<Appointment>(this.url2, scheduleTerm);
+  }
+
+  isUserHave3Penalities(id: number): Observable<boolean>{
+    return this.http.get<boolean>(`${this.url3}/${id}`)
   }
 }

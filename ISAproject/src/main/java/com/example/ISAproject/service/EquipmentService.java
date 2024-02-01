@@ -20,6 +20,7 @@ public class EquipmentService {
 
     public List<Equipment> findAll(){return this.equipmentRepository.findAll();}
 
+    public Equipment save(Equipment e){return this.equipmentRepository.save(e);}
     public List<Equipment> findByEquipmentNameContaining(String name){
         return this.equipmentRepository.findByNameContaining(name);
 

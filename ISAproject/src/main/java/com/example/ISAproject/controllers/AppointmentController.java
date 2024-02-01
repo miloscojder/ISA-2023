@@ -1,5 +1,6 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.PenalitiesConditionDTO;
 import com.example.ISAproject.dto.ScheduleTermDTO;
 import com.example.ISAproject.model.Appointment;
 import com.example.ISAproject.model.Company;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +31,13 @@ public class AppointmentController {
     }
 
     //Zakazivanje termina za preuzizmanje opreme
+
+
+   // @Secured("ROLE_REGISTERED_USER")
+   //@PreAuthorize("hasRole('REGISTERED_USER')")
     @RequestMapping(value="api/scheduleTerm",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
-    //@PreAuthorize("hasRole('REGISTERED_USER')")
+
     public ResponseEntity<Appointment>  scheduleNewTerm(@RequestBody ScheduleTermDTO dto)throws Exception{
 
         Appointment updatedAppointment = this.appointmentService.scheduleTerm(dto);
@@ -56,4 +62,16 @@ public class AppointmentController {
         }
         return new ResponseEntity<>(updatedAppointment,HttpStatus.OK);
     }
+
+    //Provera da li korisnik ima 3penala
+    @RequestMapping(value="api/can-make-reservation/{idUser}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<PenalitiesConditionDTO> isUserHave3Penalties(@PathVariable Long idUser){
+        PenalitiesConditionDTO penalitiesConditionDTO = new PenalitiesConditionDTO();
+        penalitiesConditionDTO.setBanPenalities(this.appointmentService.whetherRegisteredUserHasThreePenalties(idUser));
+        System.out.println("Vrednost pomendljive za 3 penala (AppointmentController): "+ penalitiesConditionDTO.isBanPenalities());
+        return new ResponseEntity<>(penalitiesConditionDTO,HttpStatus.OK);
+    }
+
 }

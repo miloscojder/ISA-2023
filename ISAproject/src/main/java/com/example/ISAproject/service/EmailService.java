@@ -2,6 +2,7 @@ package com.example.ISAproject.service;
 
 import com.example.ISAproject.dto.UserDTO;
 import com.example.ISAproject.exception.ResourceConflictException;
+import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.User;
 import net.bytebuddy.asm.Advice;
 import org.springframework.core.env.Environment;
@@ -35,7 +36,9 @@ public class EmailService {
             throw new ResourceConflictException(userRequest.getId(), "Username already exists");
         }
 
-        User user = this.userService.save(userRequest);
+        RegisteredUser user = this.userService.save(userRequest);
+
+        System.out.println("Ovo je id regUesera"+ user.getFirstName()+ user.getId() );
 
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(user.getEmail());

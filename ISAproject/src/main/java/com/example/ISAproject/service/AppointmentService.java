@@ -32,6 +32,7 @@ public class AppointmentService {
     @Autowired
     private EquipmentService equipmentService;
 
+
     public Appointment findById(Long id){
         Optional<Appointment> appointmentOptional = this.appointmentRepository.findById(id);
         if (!appointmentOptional.isPresent()) {
@@ -39,18 +40,27 @@ public class AppointmentService {
         }
         return appointmentOptional.get();
     }
+
+
     public Appointment scheduleTerm(ScheduleTermDTO dto){
         RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
         Company company = this.companyService.findById(dto.getCompanyId());
         Appointment appointment = this.findById(dto.getAppointmentId());
 
         System.out.println("Usao je u metodu scheduleTerm"+ dto.getRegisteredUserId());
+/*
+        List<Equipment> equipments = this.equipmentService.getEquipmentByIds(dto.getEquipmentIds());
+        for (Equipment e: equipments){
+            e.setAppointment(appointment);
+            this.equipmentService.save(e);
+        }*/
 
         appointment.setFree(false);
         appointment.setRegisteredUserCome(false);
         appointment.setRegisteredUser(registeredUser);
         appointment.setCompany(company);
         appointment.setEquipments(this.equipmentService.getEquipmentByIds(dto.getEquipmentIds()));
+
 
         Appointment app = this.appointmentRepository.save(appointment);
         System.out.println("Ovo je taj termin koji je rezervisan"+ app.getRegisteredUser().getFirstName());

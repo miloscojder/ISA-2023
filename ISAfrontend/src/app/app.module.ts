@@ -23,6 +23,7 @@ import { HomeRegisteredUserComponent } from './home-registered-user/home-registe
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { SchedulingAppointmentComponent } from './scheduling-appointment/scheduling-appointment.component';
 import { RegUserDashboardComponent } from './reg-user-dashboard/reg-user-dashboard.component';
+import { PopUpRegisteredUserHaveThreePenaltiesComponent } from './pop-up-registered-user-have-three-penalties/pop-up-registered-user-have-three-penalties.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegUserDashboardComponent } from './reg-user-dashboard/reg-user-dashboa
     HomeRegisteredUserComponent,
     ProfileCompanyComponent,
     SchedulingAppointmentComponent,
-    RegUserDashboardComponent
+    RegUserDashboardComponent,
+    PopUpRegisteredUserHaveThreePenaltiesComponent
   ],
   imports: [
     BrowserModule,
