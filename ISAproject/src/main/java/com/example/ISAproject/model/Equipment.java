@@ -16,7 +16,7 @@ public class Equipment {
     @ManyToOne
     private Company company;
     @ManyToOne
-   // @JoinColumn(name = "appointment_id")
+    //@JoinColumn(name = "appointment_id")
     private Appointment appointment;
 
     public Long getId() {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appointment } from '../model/appointment';
+import { ScheduleTerm } from '../model/scheduleTerm';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Appointment } from '../model/appointment';
 export class AppointmentService {
   url = "http://localhost:8081/api/appointments";
   url1 = "http://localhost:8081/api/scheduledTerm";
-
+  url2 = "http://localhost:8081/api/cancelTerm";
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +20,10 @@ export class AppointmentService {
 
   findAllAvailableTerms(id: number): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(`${this.url}/${id}`)
+  }
+
+  cancelTerm(scheduleTerm: ScheduleTerm): Observable<Appointment>{
+    console.log('Pokrenuta je f-ja za otkazivanje termina', scheduleTerm.appointmentId)
+    return this.http.put<Appointment>(this.url2, scheduleTerm);
   }
 }

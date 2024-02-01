@@ -45,4 +45,15 @@ public class AppointmentController {
         List<Appointment> appointments= this.appointmentService.findAllTermsByRegisteredUser(id);
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
+    //Otkazivanje zakazanog termina
+    @RequestMapping(value="api/cancelTerm",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Appointment>  cancelTerm(@RequestBody ScheduleTermDTO dto) {
+        System.out.println("Stigli smo do kntrolera..."+ dto.getAppointmentId());
+        Appointment updatedAppointment = this.appointmentService.cancelAppointment(dto.getAppointmentId());
+        if(updatedAppointment.getRegisteredUser()!=null){
+            return new ResponseEntity<>(null,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(updatedAppointment,HttpStatus.OK);
+    }
 }

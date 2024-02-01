@@ -44,8 +44,8 @@ public class Appointment {
     @ManyToOne
     private Calendar calendar;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @OneToMany//(cascade ={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    //@JsonIgnore
     private List<Equipment> equipments;
 
     @ManyToOne
@@ -66,6 +66,7 @@ public class Appointment {
     public void setEquipments(List<Equipment> equipments) {
         this.equipments.addAll(equipments);
     }
+
 
     public Long getId() {
         return id;

@@ -6,10 +6,14 @@ import com.example.ISAproject.model.Company;
 import com.example.ISAproject.model.Equipment;
 import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.repository.AppointmentRepository;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -108,6 +112,7 @@ public class AppointmentService {
 
         return futureAvailableTerms;
     }
+
     public List<Appointment> findAllTermsByRegisteredUser(Long id){
         List<Appointment> allTerms = appointmentRepository.findAll();
         List<Appointment> foundedTerms = new ArrayList<>();
@@ -118,5 +123,41 @@ public class AppointmentService {
             }
         }
         return foundedTerms;
+    }
+
+    //Otkazivanje zakazanog termina po id-u termina
+    @Transactional
+    public Appointment cancelAppointment(Long id) {
+        System.out.println("Pokrenula se f-ja za otkazivanje termina..."+ id);
+        Optional<Appointment> appointment = this.appointmentRepository.findById(id);
+        if (!appointment.isPresent()) {
+            return null;
+        }
+
+
+        Appointment appointment1 = appointment.get();
+
+        RegisteredUser registeredUser = this.registeredUserService.findById(appointment1.getRegisteredUser().getId());
+
+        if (appointment1.getRegisteredUser() != null) {
+
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            LocalDateTime appointmentStart = appointment1.getReservationStart();
+            Duration timeDifference = Duration.between(currentDateTime, appointmentStart);
+
+            if (timeDifference.toHours() < 24) {
+                registeredUser.setPoints(registeredUser.getPoints() + 2);
+            }else {
+                registeredUser.setPoints(registeredUser.getPoints() + 1);
+            }
+
+            appointment1.setRegisteredUser(null);
+            appointment1.setFree(true);
+            appointment1.getEquipments().clear();
+
+        }
+
+        return this.appointmentRepository.save(appointment1);
+
     }
 }
