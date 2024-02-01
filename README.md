@@ -1,7 +1,7 @@
 # ISA-Project
 
 <br>
-Students: <br>
+Student: <br>
 Miloš Ćojder IN37/2018 -Student 1 <br>
 <hr>
 
