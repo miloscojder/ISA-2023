@@ -39,4 +39,8 @@ export class RegUserDashboardComponent implements OnInit {
       this.viewSheduledAppointments();
     });
   }
+
+  goToCompany(){
+    this.router.navigate(['home-page']);
+  }
 }

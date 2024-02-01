@@ -32,7 +32,12 @@ username: any;
   }
 
   showDashboard() {
- 
+      this.id = sessionStorage.getItem('id');
+      this.role = sessionStorage.getItem('role');
+      if (this.role == 'RegisteredUser') {
+        this.router.navigate(['reg-user-dashboard']);
+      }
+     
   }
 
 }

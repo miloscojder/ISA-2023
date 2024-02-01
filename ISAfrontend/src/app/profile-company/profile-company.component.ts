@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyServiceService } from '../service/company-service.service';
 import { EquipmentService } from '../service/equipment.service';
 import { ScheduleTermService } from '../service/schedule-term.service';
+import { AppointmentService } from '../service/appointment.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpRegisteredUserHaveThreePenaltiesComponent } from '../pop-up-registered-user-have-three-penalties/pop-up-registered-user-have-three-penalties.component';
 
 @Component({
   selector: 'app-profile-company',
@@ -22,7 +25,8 @@ export class ProfileCompanyComponent implements OnInit {
   selectedEquipmentIds: number[] = [];
 
   constructor(private route: ActivatedRoute, private companyService: CompanyServiceService,
-    private equipmentService: EquipmentService,private scheduleTermService: ScheduleTermService ,private router: Router ) { }
+    private equipmentService: EquipmentService,private scheduleTermService: ScheduleTermService
+     ,private router: Router, private appointmentService: AppointmentService, private dialogRef: MatDialog ) { }
 
   ngOnInit(): void {
     this.loadCenter();
@@ -74,7 +78,16 @@ export class ProfileCompanyComponent implements OnInit {
   viewFreeTerm()
   {
     this.scheduleTermService.equipmentIds = this.selectedEquipmentIds;
-    console.log('Selektovana oprema za termin:', this.selectedEquipmentIds);
-    this.router.navigate(['schedule-appointment']);
+    console.log('Selektovana oprema za termin id regUsera:', this.selectedEquipmentIds, Number(sessionStorage.getItem('id')), String(sessionStorage.getItem('role')));
+    this.appointmentService.isUserHave3Penalities(Number(sessionStorage.getItem('id')))
+    .subscribe((hasPenalties: any) => {
+      console.log('Has penalties:', hasPenalties);
+      if (hasPenalties.banPenalities === false) {
+        
+        this.router.navigate(['schedule-appointment']);
+      } else {
+        this.dialogRef.open(PopUpRegisteredUserHaveThreePenaltiesComponent);
+      }
+    });
   }
 }

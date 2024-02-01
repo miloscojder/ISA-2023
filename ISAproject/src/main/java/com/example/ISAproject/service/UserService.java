@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.ISAproject.model.RegisteredUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,6 +27,10 @@ public class UserService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private AuthorityService authorityService;
+	@Autowired
+	private RegisteredUserService registeredUserService;
 	
 	
 	public User findByUsername(String username) throws UsernameNotFoundException {
@@ -50,7 +55,7 @@ public class UserService {
 	}
 
 	
-	public User save(UserDTO userRequest) {
+	public RegisteredUser save(UserDTO userRequest) {
 		List<User> listOfAll = this.userRepository.findAll();
 		User u = new User();
 		u.setUsername(userRequest.getUsername());
@@ -83,11 +88,24 @@ public class UserService {
 		u.setId(id);
 		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
 		List<Authority> authorities=new ArrayList<>();
+
+		RegisteredUser newRegisteredUser = new RegisteredUser();
+
+		authorities = authorityService.findByName("ROLE_REGISTERED_USER");
+		u.setAuthorities(authorities);
+		RegisteredUser registeredUser = new RegisteredUser(u.getUsername(), u.getPassword(), u.getEmail(), u.getFirstName(), u.getLastName(), u.getMobile(), u.getCity(), u.getState(), u.getSex(), u.getProfession(), u.getOrganizationInformation(), u.isEnabled(), u.getRole(), authorities );
+		//User newUser = this.userRepository.save(u);
+		registeredUser.setId(u.getId());
+
+		newRegisteredUser = this.registeredUserService.save(registeredUser);
+		//newRegisteredUser.setId(u.getId());
+		//u.setId(newRegisteredUser.getId());
 		//User newUser=new User();
-		System.out.println("id iz userService"+ u.getId());
+		System.out.println("id iz userService"+ newRegisteredUser.getId());
 		System.out.println("Ime iz userService"+ u.getFirstName());
-		User newUser = this.userRepository.save(u);
-		return newUser;
+		System.out.println("Ime iz userService"+ u.getId());
+
+		return newRegisteredUser;
 	}
 	public User activateById(Long id) {
 		Optional<User> UserOpt= Optional.ofNullable(this.findById(id));

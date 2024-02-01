@@ -66,7 +66,6 @@ public class CompanyController {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<Equipment>> findAllEquipmentByCompany(@PathVariable Long id, @PathVariable String name)
     {
-        System.out.println("Usli smo u dobru metodu u controlleru");
         List<Equipment> equipments=this.equipmentService.findAllEquipmentByCompanyByEquipmentNameContaining(id, name);
         return new ResponseEntity<>(equipments,HttpStatus.OK);
     }

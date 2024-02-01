@@ -2,6 +2,7 @@ package com.example.ISAproject.controllers;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.ISAproject.model.RegisteredUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -78,7 +79,7 @@ public class AuthenticationController {
 			throw new ResourceConflictException(userRequest.getId(), "Username already exists");
 		}
 
-		User user = this.userService.save(userRequest);
+		RegisteredUser user = this.userService.save(userRequest);
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}/*

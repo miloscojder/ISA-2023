@@ -67,4 +67,28 @@ public class RegisteredUser extends User{
         setAppointments(appointments);
     }
 
+    public RegisteredUser(String username, String password, String email, String firstName, String lastName,
+                          String mobile, String city, String state, String sex, String profession,
+                          String organizationInformation, boolean enabled, String role,
+                          List<Authority> authorities) {
+        super();
+        setUsername(username);
+        setPassword(password);
+        setEmail(email);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setMobile(mobile);
+        setCity(city);
+        setState(state);
+        setSex(sex);
+        setProfession(profession);
+        setOrganizationInformation(organizationInformation);
+        setEnabled(enabled);
+        setRole(role);
+        setAuthorities(authorities);
+        this.setPoints(0);
+        this.setBenefits("Redovan");
+        this.setCategory("Redovan");
+
+    }
 }
